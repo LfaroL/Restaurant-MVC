@@ -1,0 +1,19 @@
+﻿@model OdeToFood.Models.RestaurantReview
+
+
+@* "@:" to indicate Literal Text*@
+
+
+<div class="review">
+    <h4>@Model.Name</h4>
+    <span>@Model.Rating</span>
+    <p>@Model.City, @Model.Country</p>
+
+    <span class="right">
+        @* 1. The type of query to show on URL(i.e Reviews/Edit?howMany=3) *@
+        @*@Html.ActionLink("Edit", "Edit", new { howMany = Model.Id })*@
+
+
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+    </span>
+</div>

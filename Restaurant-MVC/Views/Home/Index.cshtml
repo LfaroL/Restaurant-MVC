@@ -1,0 +1,53 @@
+﻿@model IPagedList<RestaurantListViewModel>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@* If form doesn't specify an action, it goes back to the URL it came from *@
+
+<form method="get" action="@Url.Action("Index")"
+      data-otf-ajax="true" data-otf-target="#restaurantList">
+
+@* Match the name of the search input with the parameter in Index Action (string searchTerm)*@
+
+<input type="search" name="searchTerm" data-otf-autocomplete="@Url.Action("Autocomplete")" />
+<input type="submit" value="Search By Name" />
+</form>
+
+@* Partial view for Ajax Searching *@
+@Html.Partial("_Restaurants", Model)
+
+
+@*@Html.Action("SayHello");*@
+
+
+
+@*@using (Ajax.BeginForm(
+        new AjaxOptions
+        {
+            HttpMethod = "get",
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "restaurantList"   // Update HTML element with the name restaurantList
+        }))
+    {
+        <input type="search" name="searchTerm" />
+        <input type="submit" value="Search By Name" />
+    }*@
+
+
+
+
+@* get method takes input and places them in the query string 
+    Get Operation = Read Operation
+    Searching 
+    *@
+
+
+@* post method puts value inside http message body and not in query 
+    Post Operations - Write Operations
+    Submitting information to server to save in database
+    Processing credit card
+    Creating restaurant
+    Editing review
+    *@

@@ -1,0 +1,44 @@
+﻿@model OdeToFood.Models.Restaurant
+
+@{
+    ViewBag.Title = "RestaurantReviews";
+}
+
+<h2>@Model.Name</h2>
+
+
+<table>
+
+    <tr>
+        <th>
+            @* FirstOrDefault() to get the properties of an ICollection in a model *@
+            @Html.DisplayNameFor(model => model.Reviews.FirstOrDefault().Rating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reviews.FirstOrDefault().Body)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reviews.FirstOrDefault().ReviewerName)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Reviews)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Body)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReviewerName)
+            </td>
+            <td>
+
+        </tr>
+    }
+
+</table>

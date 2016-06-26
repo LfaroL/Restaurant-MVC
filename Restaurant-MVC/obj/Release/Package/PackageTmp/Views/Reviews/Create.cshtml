@@ -1,0 +1,58 @@
+﻿@model OdeToFood.Models.RestaurantReview
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@* <form action="/Reviews/Create?restaurantId=2 method="post"> 
+    Html.BeginForm() returns object implementing iDisposable
+    can be used with C# using statement
+    C# compiler will emit code to automatically call dispose on object
+    *@
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>New Review</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Rating)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Rating)
+            @Html.ValidationMessageFor(model => model.Rating)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Body)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Body)
+            @Html.ValidationMessageFor(model => model.Body)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ReviewerName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ReviewerName)
+            @Html.ValidationMessageFor(model => model.ReviewerName)
+        </div>
+
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+
+}
